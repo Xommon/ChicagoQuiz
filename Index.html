@@ -69,37 +69,56 @@
   </head>
   <body>
     <div class="quiz-container">
-      <h1>Quiz</h1>
+      <h1>Chicago Neighborhood Quiz</h1>
 
       <div class="question" id="question1">
-        <h2>1. What is the capital of France?</h2>
+        <h2>1. How close do you want to be to the beach?</h2>
         <ul class="options">
-          <li><input type="radio" name="q1" value="Paris" /> Paris</li>
-          <li><input type="radio" name="q1" value="London" /> London</li>
-          <li><input type="radio" name="q1" value="Berlin" /> Berlin</li>
-          <li><input type="radio" name="q1" value="Madrid" /> Madrid</li>
+          <li>
+            <input type="radio" name="q1" value="5" /> Within walking distance
+          </li>
+          <li>
+            <input type="radio" name="q1" value="4" /> A short bus ride away
+          </li>
+          <li>
+            <input type="radio" name="q1" value="3" /> A medium train or bus
+            ride away
+          </li>
+          <li>
+            <input type="radio" name="q1" value="2" /> A car/rideshare trip away
+          </li>
+          <li>
+            <input type="radio" name="q1" value="1" /> This doesn't matter to me
+          </li>
         </ul>
       </div>
 
       <div class="question" id="question2">
-        <h2>2. Select the programming languages:</h2>
+        <h2>2. What is your ideal mode of transportation to run errands?</h2>
         <ul class="options">
-          <li>
-            <input type="checkbox" name="q2" value="JavaScript" /> JavaScript
-          </li>
-          <li><input type="checkbox" name="q2" value="Python" /> Python</li>
-          <li><input type="checkbox" name="q2" value="HTML" /> HTML</li>
-          <li><input type="checkbox" name="q2" value="CSS" /> CSS</li>
+          <li><input type="radio" name="q2" value="5" /> Walking</li>
+          <li><input type="radio" name="q2" value="4" /> Bicycle or Scooter</li>
+          <li><input type="radio" name="q2" value="3" /> Bus</li>
+          <li><input type="radio" name="q2" value="2" /> Train</li>
+          <li><input type="radio" name="q2" value="1" /> Driving/Rideshare</li>
         </ul>
       </div>
 
       <div class="question" id="question3">
-        <h2>3. What is 2 + 2?</h2>
+        <h2>3. How do you feel about neighborhood safety?</h2>
         <ul class="options">
-          <li><input type="radio" name="q3" value="3" /> 3</li>
-          <li><input type="radio" name="q3" value="4" /> 4</li>
-          <li><input type="radio" name="q3" value="5" /> 5</li>
-          <li><input type="radio" name="q3" value="6" /> 6</li>
+          <li>
+            <input type="radio" name="q3" value="3" /> Safety is the most
+            important factor to me
+          </li>
+          <li>
+            <input type="radio" name="q3" value="2" /> I understand that crime
+            happens in cities sometimes
+          </li>
+          <li>
+            <input type="radio" name="q3" value="1" /> I know how to protect
+            myself
+          </li>
         </ul>
       </div>
 
@@ -109,33 +128,278 @@
     </div>
 
     <script>
-      function submitQuiz() {
-        let score = 0;
+      function Neighbourhood(name, score, density, crime) {
+        this.name = name;
+        this.score = score;
+        this.density = density;
+        this.crime = crime;
+      }
 
-        // Question 1: Single correct answer (radio button)
+      function submitQuiz() {
+        // Neighbourhood scores
+        let albanyPark = new Neighbourhood("Albany Park", 0, 5, 2),
+          archerHeights = new Neighbourhood("Archer Heights", 0, 1, 2),
+          armourSquare = new Neighbourhood("Armour Square", 0, 3, 1),
+          ashburn = new Neighbourhood("Ashburn", 0, 2, 2),
+          auburnGresham = new Neighbourhood("Auburn Gresham", 0, 3, 1),
+          austin = new Neighbourhood("Austin", 0, 3, 1),
+          avalonPark = new Neighbourhood("Avalon Park", 0, 1, 1),
+          avondale = new Neighbourhood("Avondale", 0, 4, 3),
+          belmontCragin = new Neighbourhood("Belmont Cragin", 0, 4, 2),
+          beverly = new Neighbourhood("Beverly", 0, 1, 3),
+          bridgeport = new Neighbourhood("Bridgeport", 0, 4, 3),
+          brightonPark = new Neighbourhood("Brighton Park", 0, 4, 1),
+          burnside = new Neighbourhood("Burnside", 0, 1, 2),
+          calumetHeights = new Neighbourhood("Calumet Heights", 0, 2, 2),
+          chatham = new Neighbourhood("Chatham", 0, 4, 2),
+          chicagoLawn = new Neighbourhood("Chicago Lawn", 0, 2, 1),
+          clearing = new Neighbourhood("Clearing", 0, 3, 3),
+          douglas = new Neighbourhood("Douglas", 0, 2, 2),
+          dunning = new Neighbourhood("Dunning", 0, 4, 3),
+          eastGarfieldPark = new Neighbourhood("East Garfield Park", 0, 3, 1),
+          eastSide = new Neighbourhood("East Side", 0, 2, 3),
+          edgewater = new Neighbourhood("Edgewater", 0, 4, 3),
+          edisonPark = new Neighbourhood("Edison Park", 0, 4, 3),
+          englewood = new Neighbourhood("Englewood", 0, 1, 1),
+          forestGlen = new Neighbourhood("Forest Glen", 0, 2, 3),
+          fullerPark = new Neighbourhood("Fuller Park", 0, 1, 2),
+          gagePark = new Neighbourhood("Gage Park", 0, 3, 1),
+          garfieldRidge = new Neighbourhood("Garfield Ridge", 0, 3, 3),
+          grandBoulevard = new Neighbourhood("Grand Boulevard", 0, 2, 2),
+          grandCrossing = new Neighbourhood("Grand Crossing", 0, 4, 1),
+          hegewisch = new Neighbourhood("Hegewisch", 0, 2, 3),
+          hermosa = new Neighbourhood("Hermosa", 0, 1, 2),
+          humboldtPark = new Neighbourhood("Humboldt Park", 0, 2, 1),
+          hydePark = new Neighbourhood("Hyde Park", 0, 1, 2),
+          irvingPark = new Neighbourhood("Irving Park", 0, 3, 3),
+          jeffersonPark = new Neighbourhood("Jefferson Park", 0, 1, 3),
+          kenwood = new Neighbourhood("Kenwood", 0, 1, 1),
+          lakeView = new Neighbourhood("Lake View", 0, 4, 3),
+          lincolnPark = new Neighbourhood("Lincoln Park", 0, 4, 3),
+          lincolnSquare = new Neighbourhood("Lincoln Square", 0, 2, 2),
+          loganSquare = new Neighbourhood("Logan Square", 0, 3, 2),
+          loop = new Neighbourhood("Loop", 0, 1, 3),
+          lowerWestSide = new Neighbourhood("Lower West Side", 0, 3, 2),
+          mckinleyPark = new Neighbourhood("McKinley Park", 0, 2, 3),
+          montclare = new Neighbourhood("Montclare", 0, 4, 3),
+          morganPark = new Neighbourhood("Morgan Park", 0, 4, 3),
+          mountGreenwood = new Neighbourhood("Mount Greenwood", 0, 2, 3),
+          nearNorthSide = new Neighbourhood("Near North Side", 0, 1, 3),
+          nearSouthSide = new Neighbourhood("Near South Side", 0, 2, 3),
+          nearWestSide = new Neighbourhood("Near West Side", 0, 3, 2),
+          newCity = new Neighbourhood("New City", 0, 1, 1),
+          northCenter = new Neighbourhood("North Center", 0, 2, 3),
+          northLawndale = new Neighbourhood("North Lawndale", 0, 4, 1),
+          northPark = new Neighbourhood("North Park", 0, 2, 3),
+          norwoodPark = new Neighbourhood("Norwood Park", 0, 2, 3),
+          oakland = new Neighbourhood("Oakland", 0, 3, 2),
+          ohare = new Neighbourhood("O'Hare", 0, 2, 3),
+          portagePark = new Neighbourhood("Portage Park", 0, 4, 3),
+          pullman = new Neighbourhood("Pullman", 0, 3, 3),
+          riverdale = new Neighbourhood("Riverdale", 0, 4, 1),
+          rogersPark = new Neighbourhood("Rogers Park", 0, 4, 2),
+          roseland = new Neighbourhood("Roseland", 0, 1, 1),
+          southChicago = new Neighbourhood("South Chicago", 0, 1, 1),
+          southDeering = new Neighbourhood("South Deering", 0, 1, 2),
+          southLawndale = new Neighbourhood("South Lawndale", 0, 2, 2),
+          southShore = new Neighbourhood("South Shore", 0, 2, 2),
+          uptown = new Neighbourhood("Uptown", 0, 4, 2),
+          washingtonHeights = new Neighbourhood("Washington Heights", 0, 2, 2),
+          washingtonPark = new Neighbourhood("Washington Park", 0, 4, 1),
+          westElsdon = new Neighbourhood("West Elsdon", 0, 3, 2),
+          westEnglewood = new Neighbourhood("West Englewood", 0, 1, 1),
+          westGarfieldPark = new Neighbourhood("West Garfield Park", 0, 1, 1),
+          westLawn = new Neighbourhood("West Lawn", 0, 2, 2),
+          westPullman = new Neighbourhood("West Pullman", 0, 4, 1),
+          westRidge = new Neighbourhood("West Ridge", 0, 4, 2),
+          westTown = new Neighbourhood("West Town", 0, 3, 1),
+          woodlawn = new Neighbourhood("Woodlawn", 0, 3, 2);
+
+        let neighbourhoods = [
+          albanyPark,
+          archerHeights,
+          armourSquare,
+          ashburn,
+          auburnGresham,
+          austin,
+          avalonPark,
+          avondale,
+          belmontCragin,
+          beverly,
+          bridgeport,
+          brightonPark,
+          burnside,
+          calumetHeights,
+          chatham,
+          chicagoLawn,
+          clearing,
+          douglas,
+          dunning,
+          eastGarfieldPark,
+          eastSide,
+          edgewater,
+          edisonPark,
+          englewood,
+          forestGlen,
+          fullerPark,
+          gagePark,
+          garfieldRidge,
+          grandBoulevard,
+          grandCrossing,
+          hegewisch,
+          hermosa,
+          humboldtPark,
+          hydePark,
+          irvingPark,
+          jeffersonPark,
+          kenwood,
+          lakeView,
+          lincolnPark,
+          lincolnSquare,
+          loganSquare,
+          loop,
+          lowerWestSide,
+          mckinleyPark,
+          montclare,
+          morganPark,
+          mountGreenwood,
+          nearNorthSide,
+          nearSouthSide,
+          nearWestSide,
+          newCity,
+          northCenter,
+          northLawndale,
+          northPark,
+          norwoodPark,
+          oakland,
+          ohare,
+          portagePark,
+          pullman,
+          riverdale,
+          rogersPark,
+          roseland,
+          southChicago,
+          southDeering,
+          southLawndale,
+          southShore,
+          uptown,
+          washingtonHeights,
+          washingtonPark,
+          westElsdon,
+          westEnglewood,
+          westGarfieldPark,
+          westLawn,
+          westPullman,
+          westRidge,
+          westTown,
+          woodlawn,
+        ];
+
+        // 1: Beach
         const q1 = document.querySelector('input[name="q1"]:checked');
-        if (q1 && q1.value === "Paris") {
-          score++;
+        if (q1 && q1.value === "5") {
+          [
+            douglas,
+            eastSide,
+            edgewater,
+            kenwood,
+            lincolnPark,
+            nearNorthSide,
+            oakland,
+            rogersPark,
+            southShore,
+            uptown,
+          ].forEach(function (hood) {
+            hood.score += 5;
+          });
+
+          [hydePark, lakeView, loop, southChicago].forEach(function (hood) {
+            hood.score += 4;
+          });
+        }
+
+        // 2. Density
+        const q2 = document.querySelector('input[name="q2"]:checked');
+        if (q2) {
+          neighbourhoods.forEach(function (hood) {
+            if (hood.density === Number(q2.value)) {
+              hood.score += 5;
+            } else if (
+              hood.density === q2.value - 1 ||
+              hood.density === q2.value + 1
+            ) {
+              hood.score += 2;
+            }
+          });
+        }
+
+        // 3. Crime
+        const q3 = document.querySelector('input[name="q3"]:checked');
+        if (q3) {
+          neighbourhoods.forEach(function (hood) {
+            if (hood.crime >= Number(q3.value)) {
+              hood.score += 5;
+            }
+          });
         }
 
         // Question 2: Multiple correct answers (checkboxes)
-        const q2 = document.querySelectorAll('input[name="q2"]:checked');
-        const q2Values = Array.from(q2).map((el) => el.value);
-        const correctQ2 = ["JavaScript", "Python"];
-        if (q2Values.sort().join() === correctQ2.sort().join()) {
-          score++;
-        }
+        /*const q2 = document.querySelectorAll('input[name="q2"]:checked');
+              const q2Values = Array.from(q2).map((el) => el.value);
+              const correctQ2 = ["JavaScript", "Python"];
+              if (q2Values.sort().join() === correctQ2.sort().join()) {
+                score++;
+              }
 
-        // Question 3: Single correct answer (radio button)
-        const q3 = document.querySelector('input[name="q3"]:checked');
-        if (q3 && q3.value === "4") {
-          score++;
-        }
+              // Question 3: Single correct answer (radio button)
+              const q3 = document.querySelector('input[name="q3"]:checked');
+              if (q3 && q3.value === "4") {
+                score++;
+              }*/
 
         // Display result
         const result = document.getElementById("result");
         result.style.display = "block";
-        result.innerHTML = `You scored ${score} out of 3`;
+
+        // Find all matching neighbourhoods
+        let matches = [];
+        for (let i = 0; i < 77; i++) {
+          if (i === 0) {
+            // Add the first neighbourhood
+            matches.push(neighbourhoods[0]);
+          } else if (neighbourhoods[i].score > matches[0].score) {
+            // Replace the neighbourhood(s)
+            matches.length = 0;
+            matches.push(neighbourhoods[i]);
+          } else if (neighbourhoods[i].score === matches[0].score) {
+            // Add equal neighbourhoods
+            matches.push(neighbourhoods[i]);
+          }
+        }
+
+        // Create a string of all of the matches
+        let matchesString = "";
+        for (let i = 0; i < matches.length; i++) {
+          matchesString += matches[i].name;
+          if (i < matches.length - 2) {
+            matchesString += ", ";
+          } else if (i === matches.length - 2) {
+            matchesString += " and ";
+          }
+        }
+
+        // Print the console all scores
+        console.clear();
+        neighbourhoods.forEach(function (hood) {
+          console.log(`${hood.name}: ${hood.score}`);
+        });
+
+        // Display to the user their matches
+        if (matches.length == 1) {
+          result.innerHTML = `Your ideal neighborhood is ${matches[0].name}.`;
+        } else {
+          result.innerHTML = `Your ideal neighborhoods are ${matchesString}.`;
+        }
       }
     </script>
   </body>
