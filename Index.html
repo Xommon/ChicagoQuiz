@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Website</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+      }
+
+      .quiz-container {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      .question {
+        margin-bottom: 20px;
+      }
+
+      .question h2 {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+
+      .options {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      .options li {
+        margin-bottom: 10px;
+      }
+
+      button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #218838;
+      }
+
+      .result {
+        display: none;
+        text-align: center;
+        margin-top: 20px;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="quiz-container">
+      <h1>Quiz</h1>
+
+      <div class="question" id="question1">
+        <h2>1. What is the capital of France?</h2>
+        <ul class="options">
+          <li><input type="radio" name="q1" value="Paris" /> Paris</li>
+          <li><input type="radio" name="q1" value="London" /> London</li>
+          <li><input type="radio" name="q1" value="Berlin" /> Berlin</li>
+          <li><input type="radio" name="q1" value="Madrid" /> Madrid</li>
+        </ul>
+      </div>
+
+      <div class="question" id="question2">
+        <h2>2. Select the programming languages:</h2>
+        <ul class="options">
+          <li>
+            <input type="checkbox" name="q2" value="JavaScript" /> JavaScript
+          </li>
+          <li><input type="checkbox" name="q2" value="Python" /> Python</li>
+          <li><input type="checkbox" name="q2" value="HTML" /> HTML</li>
+          <li><input type="checkbox" name="q2" value="CSS" /> CSS</li>
+        </ul>
+      </div>
+
+      <div class="question" id="question3">
+        <h2>3. What is 2 + 2?</h2>
+        <ul class="options">
+          <li><input type="radio" name="q3" value="3" /> 3</li>
+          <li><input type="radio" name="q3" value="4" /> 4</li>
+          <li><input type="radio" name="q3" value="5" /> 5</li>
+          <li><input type="radio" name="q3" value="6" /> 6</li>
+        </ul>
+      </div>
+
+      <button onclick="submitQuiz()">Submit Quiz</button>
+
+      <div class="result" id="result"></div>
+    </div>
+
+    <script>
+      function submitQuiz() {
+        let score = 0;
+
+        // Question 1: Single correct answer (radio button)
+        const q1 = document.querySelector('input[name="q1"]:checked');
+        if (q1 && q1.value === "Paris") {
+          score++;
+        }
+
+        // Question 2: Multiple correct answers (checkboxes)
+        const q2 = document.querySelectorAll('input[name="q2"]:checked');
+        const q2Values = Array.from(q2).map((el) => el.value);
+        const correctQ2 = ["JavaScript", "Python"];
+        if (q2Values.sort().join() === correctQ2.sort().join()) {
+          score++;
+        }
+
+        // Question 3: Single correct answer (radio button)
+        const q3 = document.querySelector('input[name="q3"]:checked');
+        if (q3 && q3.value === "4") {
+          score++;
+        }
+
+        // Display result
+        const result = document.getElementById("result");
+        result.style.display = "block";
+        result.innerHTML = `You scored ${score} out of 3`;
+      }
+    </script>
+  </body>
+</html>
